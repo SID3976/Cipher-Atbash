@@ -1,0 +1,25 @@
+listalphabetlowercase = tuple("абвгдеёжзийклмнопрстуфхцчшщъыьэюя")
+listalphabetuppercase = tuple("АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ")
+coundalphabet = len(listalphabetuppercase or listalphabetlowercase)
+
+print('Это мини-программа для шифрования/дешифрования текста шифром "Атбаш".\n(Поддерживает только русский язык!)')
+text = input("Введи текст:\n")
+textcipher = "\n"
+
+while coundalphabet != 0:
+    coundalphabet -= 1
+    for i in text:
+        if i in listalphabetuppercase:
+            numbercipher = coundalphabet - (listalphabetuppercase.index(i) + 1) + 1
+            lettercipher = listalphabetuppercase[numbercipher]
+            textcipher += str(lettercipher)
+        elif i in listalphabetlowercase:
+            numbercipher = coundalphabet - (listalphabetlowercase.index(i) + 1) + 1
+            lettercipher = listalphabetlowercase[numbercipher]
+            textcipher += str(lettercipher)
+        else:
+            textcipher += str(i)
+            continue
+    break
+
+print(textcipher)
